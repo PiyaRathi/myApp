@@ -10,7 +10,7 @@ WORKDIR /app
 # install and cache app dependencies
 COPY package.json /app/package.json
 RUN npm install
-RUN npm install -g @angular/cli@7.3.9
+RUN npm install -g @angular/cli@7.3.9 --unsafe
 
 # add app
 COPY . /app
