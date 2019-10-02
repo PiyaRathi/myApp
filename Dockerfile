@@ -1,5 +1,5 @@
 # base image
-FROM node:12.2.0
+FROM node:12.2.0 as build
 
 # set working directory
 WORKDIR /app
@@ -24,7 +24,7 @@ RUN ng build --output-path=dist
 FROM nginx:1.16.0-alpine
 
 # copy artifact build from the 'build environment'
-COPY /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # expose port 80
 EXPOSE 80
