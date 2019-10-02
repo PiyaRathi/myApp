@@ -24,7 +24,7 @@ RUN ng build --output-path=dist
 FROM nginx:1.16.0-alpine
 
 # copy artifact build from the 'build environment'
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY /app/dist /usr/share/nginx/html
 
 # expose port 80
 EXPOSE 80
